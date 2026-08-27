@@ -1,0 +1,29 @@
+{
+ "BASE": {
+  "n": 58,
+  "boundary_entropy": 2.0402,
+  "silhouette": 0.047,
+  "davies_bouldin": 1.6145,
+  "intra_cos_dist": 0.4207,
+  "inter_cos_dist": 0.3035,
+  "separation_ratio": 0.7213
+ },
+ "NAIVE": {
+  "n": 883,
+  "boundary_entropy": 0.0,
+  "silhouette": 0.1361,
+  "davies_bouldin": 3.088,
+  "intra_cos_dist": 0.3612,
+  "inter_cos_dist": 0.2167,
+  "separation_ratio": 0.6001
+ },
+ "BEDR": {
+  "n": 559,
+  "boundary_entropy": 0.5665,
+  "silhouette": 0.2565,
+  "davies_bouldin": 2.3392,
+  "intra_cos_dist": 0.2565,
+  "inter_cos_dist": 0.2395,
+  "separation_ratio": 0.9338
+ }
+}

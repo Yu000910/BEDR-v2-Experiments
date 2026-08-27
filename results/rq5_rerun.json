@@ -1,0 +1,38 @@
+{
+ "BASE": {
+  "acc_mean": 0.6261,
+  "acc_std": 0.0053,
+  "macro_f1_mean": 0.266,
+  "macro_f1_std": 0.0108
+ },
+ "EDA": {
+  "acc_mean": 0.6401,
+  "acc_std": 0.0047,
+  "macro_f1_mean": 0.3834,
+  "macro_f1_std": 0.0081
+ },
+ "SMOTE": {
+  "acc_mean": 0.6382,
+  "acc_std": 0.0055,
+  "macro_f1_mean": 0.3595,
+  "macro_f1_std": 0.0052
+ },
+ "IPF": {
+  "acc_mean": 0.6333,
+  "acc_std": 0.0043,
+  "macro_f1_mean": 0.3002,
+  "macro_f1_std": 0.0071
+ },
+ "RKNN": {
+  "acc_mean": 0.6413,
+  "acc_std": 0.0038,
+  "macro_f1_mean": 0.3611,
+  "macro_f1_std": 0.0075
+ },
+ "BEDRv2": {
+  "acc_mean": 0.6192,
+  "acc_std": 0.0096,
+  "macro_f1_mean": 0.3721,
+  "macro_f1_std": 0.0111
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "k5_no_filter": {
+  "n_train": 22911,
+  "acc_mean": 0.7246,
+  "acc_std": 0.0008
+ },
+ "k5_theta_1.0": {
+  "n_train": 20043,
+  "acc_mean": 0.7313,
+  "acc_std": 0.0015
+ },
+ "k5_theta_1.5": {
+  "n_train": 21167,
+  "acc_mean": 0.7245,
+  "acc_std": 0.0083
+ },
+ "k5_theta_2.3": {
+  "n_train": 22630,
+  "acc_mean": 0.7267,
+  "acc_std": 0.0024
+ },
+ "k15_no_filter": {
+  "n_train": 22911,
+  "acc_mean": 0.7246,
+  "acc_std": 0.0008
+ },
+ "k15_theta_1.0": {
+  "n_train": 14996,
+  "acc_mean": 0.7197,
+  "acc_std": 0.0099
+ },
+ "k15_theta_1.5": {
+  "n_train": 16685,
+  "acc_mean": 0.729,
+  "acc_std": 0.004
+ },
+ "k15_theta_2.3": {
+  "n_train": 19911,
+  "acc_mean": 0.7226,
+  "acc_std": 0.0057
+ },
+ "k30_no_filter": {
+  "n_train": 22911,
+  "acc_mean": 0.7246,
+  "acc_std": 0.0008
+ },
+ "k30_theta_1.0": {
+  "n_train": 12703,
+  "acc_mean": 0.7127,
+  "acc_std": 0.0036
+ },
+ "k30_theta_1.5": {
+  "n_train": 13573,
+  "acc_mean": 0.7076,
+  "acc_std": 0.0114
+ },
+ "k30_theta_2.3": {
+  "n_train": 15903,
+  "acc_mean": 0.7224,
+  "acc_std": 0.0111
+ }
+}
