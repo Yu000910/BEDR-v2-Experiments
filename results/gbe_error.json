@@ -1,0 +1,141 @@
+{
+ "gbe_plain": {
+  "baseline": {
+   "n": 11840,
+   "classes": 574,
+   "gbe": 3.097
+  },
+  "naive": {
+   "n": 34153,
+   "classes": 679,
+   "gbe": 2.5064
+  },
+  "oversampled": {
+   "n": 26490,
+   "classes": 679,
+   "gbe": 2.3498
+  },
+  "final": {
+   "n": 24174,
+   "classes": 679,
+   "gbe": 2.2857
+  }
+ },
+ "entropy_error": {
+  "lbe_mean": 3.1031,
+  "lbe_median": 3.3232,
+  "quartile_edges": [
+   0.0,
+   2.7025,
+   3.3232,
+   3.7736,
+   3.9069
+  ],
+  "judges": {
+   "MLP": {
+    "accuracy": 0.7123,
+    "quartiles": [
+     {
+      "quartile": 1,
+      "range": [
+       0.0,
+       2.702
+      ],
+      "n": 746,
+      "error": 0.1507
+     },
+     {
+      "quartile": 2,
+      "range": [
+       2.702,
+       3.323
+      ],
+      "n": 674,
+      "error": 0.2534
+     },
+     {
+      "quartile": 3,
+      "range": [
+       3.323,
+       3.774
+      ],
+      "n": 769,
+      "error": 0.3456
+     },
+     {
+      "quartile": 4,
+      "range": [
+       3.774,
+       3.907
+      ],
+      "n": 795,
+      "error": 0.3894
+     }
+    ],
+    "corr_lbe_error": 0.239,
+    "low_entropy_le2": {
+     "n": 319,
+     "error": 0.1072
+    },
+    "high_entropy_gt2": {
+     "n": 2665,
+     "error": 0.3093
+    }
+   },
+   "RIDGE": {
+    "accuracy": 0.6857,
+    "quartiles": [
+     {
+      "quartile": 1,
+      "range": [
+       0.0,
+       2.702
+      ],
+      "n": 746,
+      "error": 0.189
+     },
+     {
+      "quartile": 2,
+      "range": [
+       2.702,
+       3.323
+      ],
+      "n": 674,
+      "error": 0.3056
+     },
+     {
+      "quartile": 3,
+      "range": [
+       3.323,
+       3.774
+      ],
+      "n": 769,
+      "error": 0.3485
+     },
+     {
+      "quartile": 4,
+      "range": [
+       3.774,
+       3.907
+      ],
+      "n": 795,
+      "error": 0.4063
+     }
+    ],
+    "corr_lbe_error": 0.1779,
+    "low_entropy_le2": {
+     "n": 319,
+     "error": 0.1536
+    },
+    "high_entropy_gt2": {
+     "n": 2665,
+     "error": 0.3336
+    }
+   }
+  },
+  "class_level": {
+   "n_classes": 210,
+   "corr_class_lbe_accuracy": -0.3972
+  }
+ }
+}

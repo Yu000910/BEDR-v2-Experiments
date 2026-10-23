@@ -205,3 +205,37 @@ data/ 内含：基线集、朴素基线集、原论文 BEDR 集、BEDR-v2 三臂
 - data/candidates/：第 5/6/6b/7 轮全部候选句 CSV（补录管线的原始输入，共约 3.2 万条）
 - data/audit/：保真审计的嵌入与文本（官方定义嵌入、被删/保留/朴素样本嵌入）
 - data/filter_decision.npz：plain 局部熵筛选决策（F_LOC10 池的构成依据）
+
+---
+
+## 最终实验脚本（37–48）与自检
+
+在上述主流程之后，补充以下脚本用于论文最终报告的全部对照与消融实验（编号即论文中的呈现顺序，均以仓库根目录为工作目录，数据在 `data/`，结果写入 `results/`）：
+
+    00_selfcheck.py                     自检：核对 data/models/results 是否齐全并打印四模型 GBE
+    37_gbe_error_analysis.py            全局边界熵与下游错误率的关系
+    38_oversampling_ablation.py         过采样各轮次的消融
+    39_adaptive_threshold_pipeline.py   自适应接纳阈值（诊断-补录）流程的完整复现
+    40_gbe_four_models.py               四种训练集（B / C / C' / A）的 GBE 对比
+    41_tail_budget.py                   322 个长尾类别、等每类预算下的对比
+    42_ablation_no_structured.py         消融①：去结构化语义解耦（降级为朴素提示词 + 普通空间筛选，23,562 条）
+    43_ablation_entropy_fair.py         消融：等规模下熵筛选 vs 随机选择
+    44_ablation_local_space.py          消融②：在普通空间计算熵（去意图锚定空间）
+    45_entropy_ablation_bysubset.py     熵筛选在不同子集上的分层检验
+    46_entropy_metrics.py               熵度量的替代方案比较
+    47_v4_ablation.py                   等规模三臂消融汇总
+    48_entropy_smallbudget.py           紧预算（每类 10 条 / 5 条）下的熵筛选增益
+
+## 数据与结果
+
+- `data/`：类别索引、可行子集、零样本类、结构化攻击图、真实语句测试集、筛选决策、意图向量等小文件；
+- `results/`：论文每张表格与消融实验对应的 JSON 结果；
+- `models/`：训练好的分类器（5 个 MLP 随机种子 + Ridge）。
+
+体积较大的中间数组（`D_base_train_new.npz`、`D_naive_full.npz`、`D_arms_HYBRID.npz`、`D_final.npz`、`orig4291_plain.npz`、`test2_full_plain.npz`、`audit/embeds.npz`、`audit/texts.json`，合计约 450 MB）作为本仓库 **v1.0-artifacts** Release 的附件提供，下载后放入 `data/`（audit 两个文件放入 `data/audit/`）即可运行全部脚本。
+
+## 复现入口
+
+```bash
+python 00_selfcheck.py      # 应输出：自检 通过，以及四模型 GBE {B: 3.0970, C: 2.5064, C': 2.7017, A: 2.2857}
+```

@@ -1,0 +1,25 @@
+{
+ "n": 24174,
+ "n_classes": 679,
+ "mlp679": [
+  0.668,
+  0.0038
+ ],
+ "ridge679": 0.6057,
+ "mlp420": [
+  0.6966,
+  0.0074
+ ],
+ "ridge420": 0.6853,
+ "n_accepted": 11764,
+ "n_need": 537,
+ "fallback_classes": 359,
+ "fallback_ent_mean": 1.834,
+ "fallback_ent_max": 3.374,
+ "compare": {
+  "dfinal_matched": 11203,
+  "overlap": 10456,
+  "only_new": 1308,
+  "only_dfinal": 747
+ }
+}

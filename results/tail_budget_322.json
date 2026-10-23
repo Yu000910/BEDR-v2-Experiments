@@ -1,0 +1,55 @@
+{
+ "cohort_classes": 322,
+ "tail_test_rows": 780,
+ "cohort_definition": "base-set samples < 30 and >=1 real test sentence",
+ "results": {
+  "k10_NC_BEDR": [
+   0.5893,
+   0.0323
+  ],
+  "k10_NC_NAIVE": [
+   0.5735,
+   0.0105
+  ],
+  "k10_RIDGE_BEDR": [
+   0.6291,
+   0.0141
+  ],
+  "k10_RIDGE_NAIVE": [
+   0.5714,
+   0.007
+  ],
+  "k20_NC_BEDR": [
+   0.6449,
+   0.0055
+  ],
+  "k20_NC_NAIVE": [
+   0.6265,
+   0.0095
+  ],
+  "k20_RIDGE_BEDR": [
+   0.7235,
+   0.0044
+  ],
+  "k20_RIDGE_NAIVE": [
+   0.6692,
+   0.0161
+  ],
+  "k30_NC_BEDR": [
+   0.6526,
+   0.001
+  ],
+  "k30_NC_NAIVE": [
+   0.635,
+   0.0085
+  ],
+  "k30_RIDGE_BEDR": [
+   0.7688,
+   0.0022
+  ],
+  "k30_RIDGE_NAIVE": [
+   0.6979,
+   0.0032
+  ]
+ }
+}
