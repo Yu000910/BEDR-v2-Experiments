@@ -22,7 +22,7 @@ def load(path, kind):
         y = y_raw.astype(np.int64)
     return X, y
 
-Xb, yb = load(BASE + "/out/round5/D_bedrv2_HYBRID_top100.npz", "int")
+Xb, yb = load(BASE + "/out/round5/D_bedr_HYBRID_top100.npz", "int")
 Xn, yn = load(BASE + "/data/D_naive_full.npz", "name")
 z2 = np.load(BASE + "/data/test2_full_plain.npz", allow_pickle=True)
 m = np.asarray(z2["src"]) == "real"

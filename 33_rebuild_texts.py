@@ -119,10 +119,10 @@ for c in under:
         r7_add.append(r['sentence']); n += 1
 print('R7 added:', len(r7_add), flush=True)
 
-# ---- assemble pre-TOP100: pool0 + sel5 + sel6 + fill_add + r7_add, paired with D_bedrv2_HYBRID.npz vectors ----
+# ---- assemble pre-TOP100: pool0 + sel5 + sel6 + fill_add + r7_add, paired with D_bedr_HYBRID.npz vectors ----
 z5 = np.load(OUT + '/D_round5_HYBRID.npz', allow_pickle=True)
-zfull = np.load(OUT + '/D_bedrv2_HYBRID.npz', allow_pickle=True)
-print('D_round5_HYBRID:', z5['vectors'].shape, 'D_bedrv2_HYBRID(pre-top100):', zfull['vectors'].shape, flush=True)
+zfull = np.load(OUT + '/D_bedr_HYBRID.npz', allow_pickle=True)
+print('D_round5_HYBRID:', z5['vectors'].shape, 'D_bedr_HYBRID(pre-top100):', zfull['vectors'].shape, flush=True)
 V5 = z5['vectors'].astype(np.float32)
 Vfull = zfull['vectors'].astype(np.float32)
 assert len(pool_y) + len(sel5) == V5.shape[0], 'R5 size mismatch'
@@ -134,14 +134,14 @@ preT = np.concatenate([pool_t, np.array(sel5 + sel6 + fill_add + r7_add)])
 print('pre-TOP100 assembled:', preX.shape, len(preT), flush=True)
 
 # ---- TOP100 matching ----
-zt = np.load(OUT + '/D_bedrv2_HYBRID_top100.npz', allow_pickle=True)
+zt = np.load(OUT + '/D_bedr_HYBRID_top100.npz', allow_pickle=True)
 VT = zt['vectors'].astype(np.float32); yT = zt['labels'].astype(np.int64)
 S = VT @ preX.T
 idx = S.argmax(axis=1)
 exact = (S.max(axis=1) > 0.999999).mean()
 print('TOP100 exact match rate:', round(float(exact), 5), flush=True)
 texts_T = preT[idx]
-np.savez(OUT + '/D_bedrv2_HYBRID_top100_texts.npz', vectors=VT, labels=yT, texts=texts_T)
+np.savez(OUT + '/D_bedr_HYBRID_top100_texts.npz', vectors=VT, labels=yT, texts=texts_T)
 print('saved BEDR final with texts:', VT.shape, flush=True)
 
 # ---- test texts ----

@@ -25,7 +25,7 @@ def load(path, kind):
 
 XB, yB = load(BASE + '/data/D_base_train_new.npz', 'name')
 XN, yN = load(BASE + '/data/D_naive_full.npz', 'name')
-XE, yE = load(BASE + '/out/round5/D_bedrv2_HYBRID_top100.npz', 'int')
+XE, yE = load(BASE + '/out/round5/D_bedr_HYBRID_top100.npz', 'int')
 z2 = np.load(BASE + '/data/test2_full_plain.npz', allow_pickle=True)
 m = np.asarray(z2['src']) == 'real'
 XT = norm(z2['vectors'][m].astype(np.float32)); yT = np.asarray(z2['labels'], dtype=np.int64)[m]

@@ -18,7 +18,7 @@ def loady(path, kind):
     else:
         y = y_raw.astype(np.int64)
     return X, y
-XE, yE = loady(BASE + '/out/round5/D_bedrv2_HYBRID_top100.npz', 'int')
+XE, yE = loady(BASE + '/out/round5/D_bedr_HYBRID_top100.npz', 'int')
 XN, yN = loady(BASE + '/data/D_naive_full.npz', 'name')
 emb = np.load(BASE + '/out/fidelity_audit/embeds.npz')
 defn = {}

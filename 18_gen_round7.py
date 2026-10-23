@@ -19,7 +19,7 @@ def norm(X):
     n = np.linalg.norm(X, axis=1, keepdims=True); n[n == 0] = 1.0
     return X.astype(np.float32) / n
 
-z = np.load(OUT + "/D_bedrv2_HYBRID.npz", allow_pickle=True)
+z = np.load(OUT + "/D_bedr_HYBRID.npz", allow_pickle=True)
 XP = norm(z["vectors"].astype(np.float32)); yP = np.asarray(z["labels"], dtype=np.int64)
 cnt = Counter(yP.tolist())
 under = sorted([c for c in range(679) if cnt.get(c, 0) < TARGET])
@@ -165,7 +165,7 @@ if add_texts:
             print("fill embed", i, "/", len(add_texts), flush=True)
     Va = norm(np.vstack(vecs))
     Xout = np.vstack([XP, Va]); yout = np.concatenate([yP, np.array(add_idx, dtype=np.int64)])
-    np.savez(OUT + "/D_bedrv2_HYBRID.npz", vectors=Xout, labels=yout)
+    np.savez(OUT + "/D_bedr_HYBRID.npz", vectors=Xout, labels=yout)
     cnt2 = Counter(yout.tolist())
     vals = sorted(cnt2.values())
     print("HYBRID refilled rows", len(yout), "classes", len(cnt2), "min", vals[0], "median", vals[len(vals)//2], "max", vals[-1], "under30:", sum(1 for v in vals if v < 30), flush=True)
