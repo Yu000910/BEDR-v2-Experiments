@@ -31,7 +31,7 @@ classes = json.load(open(BASE + "/data/classes_sorted.json")); n2i = {c: i for i
 graph = json.load(open(BASE + "/data/intent_action_entity.json"))
 
 # ---- 文本 ----
-zb = np.load(BASE + "/data/D_base_train_new.npz", allow_pickle=True)
+zb = np.load(BASE + "/data/D_base_train.npz", allow_pickle=True)
 tB = [str(t) for t in zb["texts"]]; yB = np.array([n2i[str(x)] for x in zb["labels"]], dtype=np.int64)
 cands = []
 for f in ["round5", "round6", "round6b", "round7"]:

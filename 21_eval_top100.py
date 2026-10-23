@@ -16,7 +16,7 @@ def norm(X):
     n = np.linalg.norm(X, axis=1, keepdims=True); n[n == 0] = 1.0
     return X.astype(np.float32) / n
 
-z = np.load(OUT + "/D_bedr_HYBRID.npz", allow_pickle=True)
+z = np.load(OUT + "/D_bedrv2_HYBRID.npz", allow_pickle=True)
 XP = norm(z["vectors"].astype(np.float32)); yP = np.asarray(z["labels"], dtype=np.int64)
 zint = np.load(BASE + "/data/intent_embeds.npz", allow_pickle=True)
 intent_by_name = {str(l): norm(v.reshape(1, -1))[0] for l, v in zip(zint["labels"], zint["vectors"])}
@@ -46,7 +46,7 @@ for c in range(679):
         keep.append(ci[order])
 idx = np.concatenate(keep)
 Xb2, yb2 = XP[idx], yP[idx]
-np.savez(OUT + "/D_bedr_HYBRID_top100.npz", vectors=Xb2, labels=yb2)
+np.savez(OUT + "/D_bedrv2_HYBRID_top100.npz", vectors=Xb2, labels=yb2)
 print("top100 rows:", len(yb2), flush=True)
 
 zn = np.load(BASE + "/data/D_naive_full.npz", allow_pickle=True)
@@ -54,7 +54,7 @@ XN = norm(zn["vectors"].astype(np.float32)); yN = np.array([name2idx[str(t)] for
 zB = np.load(BASE + "/data/test2_full_plain.npz", allow_pickle=True)
 mB = np.asarray(zB["src"]) == "real"
 XB = norm(zB["vectors"][mB].astype(np.float32)); yB = np.asarray(zB["labels"], dtype=np.int64)[mB]
-zA = np.load(BASE + "/data/orig4291_plain.npz", allow_pickle=True)
+zA = np.load(BASE + "/data/fullcov4291_plain.npz", allow_pickle=True)
 XA = norm(zA["vectors"].astype(np.float32)); yA = np.asarray(zA["labels"], dtype=np.int64)
 
 def mlp(seed):

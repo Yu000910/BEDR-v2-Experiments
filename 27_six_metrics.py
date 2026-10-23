@@ -24,7 +24,7 @@ def load(path, kind):
     return X, y
 
 datasets = {
-    'BASE': load(BASE + '/data/D_base_train_new.npz', 'name'),
+    'BASE': load(BASE + '/data/D_base_train.npz', 'name'),
     'NAIVE': load(BASE + '/data/D_naive_full.npz', 'name'),
     'BEDR': load(BASE + '/out/round5/D_bedrv2_HYBRID_top100.npz', 'int'),
 }

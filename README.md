@@ -116,11 +116,11 @@ repository:
 
 | File | Content |
 |---|---|
-| `D_base_train_new.npz` | baseline set (11,840 × 768) |
+| `D_base_train.npz` | baseline set (11,840 × 768) |
 | `D_naive_full.npz` | naive-LLM set (34,153) |
 | `D_arms_HYBRID.npz` | oversampled pool screened in the hybrid space |
 | `D_final.npz` | BEDR label set (24,174) |
-| `orig4291_plain.npz` | full-coverage test set (4,291 rows, 679 classes) |
+| `fullcov4291_plain.npz` | full-coverage test set (4,291 rows, 679 classes) |
 | `test2_full_plain.npz` | real-sentence test set built from the official procedure examples |
 | `audit/embeds.npz`, `audit/texts.json` | embeddings and texts of the expert-audit sample |
 

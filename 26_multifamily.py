@@ -21,9 +21,9 @@ def loady(path, kind):
     return X, y
 
 datasets = {
-    'BASE': loady(BASE + '/data/D_base_train_new.npz', 'name'),
+    'BASE': loady(BASE + '/data/D_base_train.npz', 'name'),
     'NAIVE': loady(BASE + '/data/D_naive_full.npz', 'name'),
-    'BEDR': loady(BASE + '/out/round5/D_bedr_HYBRID_top100.npz', 'int'),
+    'BEDR': loady(BASE + '/out/round5/D_bedrv2_HYBRID_top100.npz', 'int'),
 }
 fam = defaultdict(list)
 for c in classes:

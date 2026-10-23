@@ -57,7 +57,7 @@ def norm(X):
     return X.astype(np.float32) / n
 
 # ---------- 1) 起始池：基础集 + 审计阶段接纳（θ=1.0）----------
-zb = np.load(BASE + "/data/D_base_train_new.npz", allow_pickle=True)
+zb = np.load(BASE + "/data/D_base_train.npz", allow_pickle=True)
 XB = norm(zb["vectors"]); yB = np.array([n2i[str(x)] for x in zb["labels"]], dtype=np.int64)
 emb = np.load(BASE + "/data/audit/embeds.npz"); txts = json.load(open(BASE + "/data/audit/texts.json"))
 XC = np.vstack([norm(emb["rem_emb"]), norm(emb["kept_emb"])])
@@ -219,7 +219,7 @@ if not args.skip_eval:
     from sklearn.linear_model import RidgeClassifier
     from sklearn.neural_network import MLPClassifier
     from sklearn.metrics import accuracy_score
-    zA = np.load(BASE + "/data/orig4291_plain.npz", allow_pickle=True)
+    zA = np.load(BASE + "/data/fullcov4291_plain.npz", allow_pickle=True)
     XA = norm(zA["vectors"]); yA = np.asarray(zA["labels"], dtype=np.int64)
     z2 = np.load(BASE + "/data/test2_full_plain.npz", allow_pickle=True); m2 = np.asarray(z2["src"]) == "real"
     XR = norm(z2["vectors"][m2]); yR = np.asarray(z2["labels"], dtype=np.int64)[m2]

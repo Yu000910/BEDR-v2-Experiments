@@ -46,7 +46,7 @@ else:
         if (i // B) % 200 == 0: print("embed", i, "/", len(texts), round(time.time()-t0), "s", flush=True)
     VC = norm(np.vstack(out)); np.savez(CACHE, VC=VC); print("embed done", round(time.time()-t0), "s", flush=True)
 
-zb = np.load(BASE + "/data/D_base_train_new.npz", allow_pickle=True)
+zb = np.load(BASE + "/data/D_base_train.npz", allow_pickle=True)
 XB = norm(zb["vectors"]); yB = np.array([n2i[str(x)] for x in zb["labels"]], dtype=np.int64)
 zi = np.load(BASE + "/data/intent_embeds.npz", allow_pickle=True)
 ib = {str(l): norm(v.reshape(1, -1))[0] for l, v in zip(zi["labels"], zi["vectors"])}
@@ -90,7 +90,7 @@ def build(ai, seed=42):
         keep.append(ci if len(ci) <= 100 else rng.choice(ci, size=100, replace=False))
     k = np.sort(np.concatenate(keep)); return X[k], y[k]
 
-zA = np.load(BASE + "/data/orig4291_plain.npz", allow_pickle=True); XA = norm(zA["vectors"]); yA = np.asarray(zA["labels"], dtype=np.int64)
+zA = np.load(BASE + "/data/fullcov4291_plain.npz", allow_pickle=True); XA = norm(zA["vectors"]); yA = np.asarray(zA["labels"], dtype=np.int64)
 z2 = np.load(BASE + "/data/test2_full_plain.npz", allow_pickle=True); m2 = np.asarray(z2["src"]) == "real"
 XR = norm(z2["vectors"][m2]); yR = np.asarray(z2["labels"], dtype=np.int64)[m2]
 XRl = norm(XR + VI[yR]); S2 = XRl @ XBh.T; nr = np.argpartition(-S2, K, axis=1)[:, :K]; lr = yB[nr]

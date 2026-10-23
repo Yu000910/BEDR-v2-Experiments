@@ -55,7 +55,7 @@ def lbe_ref(Xq, Xr, yr, k=15, bs=1024):
 out = {}
 
 # ---------- ① 标签集级全局边界熵 ----------
-sets = [("baseline", D + "/D_base_train_new.npz", "name"),
+sets = [("baseline", D + "/D_base_train.npz", "name"),
         ("naive", D + "/D_naive_full.npz", "name"),
         ("oversampled", D + "/D_arms_HYBRID.npz", "int"),
         ("final", D + "/D_final.npz", "int")]

@@ -43,7 +43,7 @@ for name, (X, y) in datasets.items():
 zB = np.load(BASE + "/data/test2_full_plain.npz", allow_pickle=True)
 mB = np.asarray(zB["src"]) == "real"
 XB = norm(zB["vectors"][mB].astype(np.float32)); yB = np.asarray(zB["labels"], dtype=np.int64)[mB]
-zA = np.load(BASE + "/data/orig4291_plain.npz", allow_pickle=True)
+zA = np.load(BASE + "/data/fullcov4291_plain.npz", allow_pickle=True)
 XA = norm(zA["vectors"].astype(np.float32)); yA = np.asarray(zA["labels"], dtype=np.int64)
 print("surface B:", XB.shape, "classes", len(set(yB.tolist())), "| surface A:", XA.shape, "classes", len(set(yA.tolist())), flush=True)
 

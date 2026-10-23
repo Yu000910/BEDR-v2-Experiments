@@ -10,7 +10,7 @@ def norm(X):
     n = np.linalg.norm(X, axis=1, keepdims=True); n[n == 0] = 1.0
     return X.astype(np.float32) / n
 
-zb = np.load(BASE + "/data/D_base_train_new.npz", allow_pickle=True)
+zb = np.load(BASE + "/data/D_base_train.npz", allow_pickle=True)
 XB = norm(zb["vectors"]); yB = np.array([name2idx[str(t)] for t in zb["labels"]], dtype=np.int64)
 emb = np.load(BASE + "/data/audit/embeds.npz")
 txts = json.load(open(BASE + "/data/audit/texts.json"))

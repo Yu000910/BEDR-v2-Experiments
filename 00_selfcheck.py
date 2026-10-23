@@ -6,9 +6,9 @@ import os, json
 import numpy as np
 BASE = os.path.dirname(os.path.abspath(__file__))
 FILES = [
-    ("data/D_base_train_new.npz", "基础集"), ("data/D_naive_full.npz", "朴素集"),
+    ("data/D_base_train.npz", "基础集"), ("data/D_naive_full.npz", "朴素集"),
     ("data/D_arms_HYBRID.npz", "过采样后"), ("data/D_final.npz", "终版标签集"),
-    ("data/orig4291_plain.npz", "全覆盖测试集"), ("data/test2_full_plain.npz", "真实语句测试集"),
+    ("data/fullcov4291_plain.npz", "全覆盖测试集"), ("data/test2_full_plain.npz", "真实语句测试集"),
     ("data/intent_embeds.npz", "意图向量"), ("data/classes_sorted.json", "类别映射"),
     ("data/audit/embeds.npz", "审计嵌入"), ("data/audit/texts.json", "审计文本"),
     ("data/filter_decision.npz", "筛选决策"),
@@ -24,8 +24,8 @@ for rel, name in FILES:
     exists = os.path.exists(p)
     ok &= exists
     print(f"[{'OK' if exists else 'MISSING'}] {rel:<48s} {name}")
-for npz in ["data/D_base_train_new.npz", "data/D_naive_full.npz", "data/D_final.npz",
-            "data/orig4291_plain.npz", "data/test2_full_plain.npz"]:
+for npz in ["data/D_base_train.npz", "data/D_naive_full.npz", "data/D_final.npz",
+            "data/fullcov4291_plain.npz", "data/test2_full_plain.npz"]:
     z = np.load(os.path.join(BASE, npz), allow_pickle=True)
     y = z["labels"]
     print(f"      {npz:<34s} vectors={z['vectors'].shape} labels={len(y)}")

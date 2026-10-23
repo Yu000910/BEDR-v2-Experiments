@@ -2,7 +2,7 @@
 """40_gbe_four_models.py
 四个模型训练集的全局边界熵（GBE）及其与分类性能的对应关系。
 
-输入：data/D_base_train_new.npz、D_naive_full.npz、D_final.npz、两个测试面
+输入：data/D_base_train.npz、D_naive_full.npz、D_final.npz、两个测试面
 输出：results/gbe_four_models.json
 说明：C′（等规模朴素子集）按“每类抽取与优化集相同的条数”重建（5 个种子取均值），
       其重建准确率与论文报告值在种子噪声内一致（0.523/0.502、0.668/0.675 对 0.527/0.502、0.669/0.675）。
@@ -32,10 +32,10 @@ def gbe(X,y,k=15,BS=2048):
         for j in range(len(labs)):
             v,c=np.unique(labs[j],return_counts=True); p=c/c.sum(); h[i+j]=-(p*np.log2(p)).sum()
     return float(h.mean())
-XB,yB=load(BASE+"/data/D_base_train_new.npz")
+XB,yB=load(BASE+"/data/D_base_train.npz")
 XN,yN=load(BASE+"/data/D_naive_full.npz")
 XE,yE=load(BASE+"/data/D_final.npz")
-zA=np.load(BASE+"/data/orig4291_plain.npz",allow_pickle=True); XA_=norm(zA["vectors"]); yA_=np.asarray(zA["labels"],dtype=np.int64)
+zA=np.load(BASE+"/data/fullcov4291_plain.npz",allow_pickle=True); XA_=norm(zA["vectors"]); yA_=np.asarray(zA["labels"],dtype=np.int64)
 z2=np.load(BASE+"/data/test2_full_plain.npz",allow_pickle=True); m2=np.asarray(z2["src"])=="real"
 XR_=norm(z2["vectors"][m2]); yR_=np.asarray(z2["labels"],dtype=np.int64)[m2]
 print("规模: B=%d/%d  C=%d/%d  A=%d/%d"%(len(yB),len(set(yB.tolist())),len(yN),len(set(yN.tolist())),len(yE),len(set(yE.tolist()))),flush=True)

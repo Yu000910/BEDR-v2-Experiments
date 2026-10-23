@@ -74,7 +74,7 @@ XAudit, yAudit = XC[acc], yC[acc]
 print("审计池（修复后 θ=1.0）:", int(acc.sum()), "条", flush=True)
 
 # ---------- 2) 基础集 ----------
-zb = np.load(BASE + "/data/D_base_train_new.npz", allow_pickle=True)
+zb = np.load(BASE + "/data/D_base_train.npz", allow_pickle=True)
 XB = norm(zb["vectors"]); yB = np.array([n2i[str(t)] for t in zb["labels"]], dtype=np.int64)
 cntB = Counter(np.concatenate([yB, yC[acc]]).tolist())
 TARGET = 30
@@ -126,7 +126,7 @@ def build(mode, seed=42):
     return X[k], y[k]
 
 # ---------- 5) 评估 ----------
-zA = np.load(BASE + "/data/orig4291_plain.npz", allow_pickle=True)
+zA = np.load(BASE + "/data/fullcov4291_plain.npz", allow_pickle=True)
 XA_ = norm(zA["vectors"]); yA = np.asarray(zA["labels"], dtype=np.int64)
 z2 = np.load(BASE + "/data/test2_full_plain.npz", allow_pickle=True); msk = np.asarray(z2["src"]) == "real"
 XR_ = norm(z2["vectors"][msk]); yR = np.asarray(z2["labels"], dtype=np.int64)[msk]

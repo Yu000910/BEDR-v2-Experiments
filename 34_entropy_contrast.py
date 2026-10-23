@@ -22,7 +22,7 @@ def mean_entropy(V, y, k=15):
             h[i+r] = -(p * np.log2(p)).sum()
     return float(h.mean())
 out = {}
-zb = np.load(BASE + '/data/D_base_train_new.npz', allow_pickle=True)
+zb = np.load(BASE + '/data/D_base_train.npz', allow_pickle=True)
 XB = norm(zb['vectors']); yB = np.array([name2idx[str(t)] for t in zb['labels']], dtype=np.int64)
 emb = np.load(BASE + '/out/fidelity_audit/embeds.npz')
 txts = json.load(open(BASE + '/out/fidelity_audit/texts.json'))

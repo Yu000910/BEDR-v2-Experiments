@@ -22,7 +22,7 @@ for f in ["round5","round6","round6b","round7"]:
             except Exception: ms = 0.0
             cands.append({"order": len(cands), "tech": r["tech_id"].strip(), "ms": ms})
 VC = np.load(BASE + "/out/embed_cache_v4_candidates.npz")["VC"]
-zb = np.load(BASE + "/data/D_base_train_new.npz", allow_pickle=True)
+zb = np.load(BASE + "/data/D_base_train.npz", allow_pickle=True)
 XB = norm(zb["vectors"]); yB = np.array([n2i[str(x)] for x in zb["labels"]], dtype=np.int64)
 zi = np.load(BASE + "/data/intent_embeds.npz", allow_pickle=True)
 ib = {str(l): norm(v.reshape(1, -1))[0] for l, v in zip(zi["labels"], zi["vectors"])}
@@ -51,7 +51,7 @@ def select(mode, k, seed=42):
 # 评估面
 z2 = np.load(BASE + "/data/test2_full_plain.npz", allow_pickle=True); m2 = np.asarray(z2["src"]) == "real"
 XR = norm(z2["vectors"][m2]); yR = np.asarray(z2["labels"], dtype=np.int64)[m2]
-zA = np.load(BASE + "/data/orig4291_plain.npz", allow_pickle=True)
+zA = np.load(BASE + "/data/fullcov4291_plain.npz", allow_pickle=True)
 XA = norm(zA["vectors"]); yA = np.asarray(zA["labels"], dtype=np.int64)
 cB = Counter(yB.tolist()); cT = Counter(yR.tolist())
 tail = set(c for c in range(679) if cB.get(c, 0) < 30 and cT.get(c, 0) > 0)

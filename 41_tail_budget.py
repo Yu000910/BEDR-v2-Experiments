@@ -59,7 +59,7 @@ def matched(X, y, k, seed, cohort):
 
 
 # ---- cohort：基础集 < 30 条 且 真实测试集有句 ----
-XB, yB = load("D_base_train_new.npz")
+XB, yB = load("D_base_train.npz")
 cntB = Counter(yB.tolist())
 z2 = np.load(BASE + "/data/test2_full_plain.npz", allow_pickle=True)
 m = np.asarray(z2["src"]) == "real"

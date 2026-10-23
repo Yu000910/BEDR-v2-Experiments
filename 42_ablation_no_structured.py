@@ -7,7 +7,7 @@
     熵筛选只能退回普通向量空间。该臂因此反映"组件 + 其依赖链"一并移除的整体效果。
     为与完整流水线可比，每类条数按"熵升序"削至优化集（D_final）的同类条数，
     最终规模 23,562 条（= 逐类 min(朴素集条数, 优化集条数) 之和）。
-输入：data/D_naive_full.npz、D_final.npz、D_base_train_new.npz、audit/、两个测试面
+输入：data/D_naive_full.npz、D_final.npz、D_base_train.npz、audit/、两个测试面
 输出：results/ablation_no_structured.json
 """
 import os, json
@@ -20,7 +20,7 @@ B = os.path.dirname(os.path.abspath(__file__))   # 包根目录
 def norm(X):
     n=np.linalg.norm(X,axis=1,keepdims=True); n[n==0]=1.0; return X.astype(np.float32)/n
 n2i={c:i for i,c in enumerate(json.load(open(B+"/data/classes_sorted.json")))}
-zB=np.load(B+"/data/D_base_train_new.npz",allow_pickle=True); XB=norm(zB["vectors"]); yB=np.array([n2i[str(t)] for t in zB["labels"]],dtype=np.int64)
+zB=np.load(B+"/data/D_base_train.npz",allow_pickle=True); XB=norm(zB["vectors"]); yB=np.array([n2i[str(t)] for t in zB["labels"]],dtype=np.int64)
 emb=np.load(B+"/data/audit/embeds.npz"); txts=json.load(open(B+"/data/audit/texts.json"))
 XC=np.vstack([norm(emb["rem_emb"]),norm(emb["kept_emb"])]); yC=np.array([n2i[t] for t,_ in txts["removed"]]+[n2i[t] for t,_ in txts["kept"]],dtype=np.int64)
 fd=np.load(B+"/data/filter_decision.npz",allow_pickle=True)
@@ -46,7 +46,7 @@ for c in range(679):
     keep.append(ci[np.argsort(hN[ci])[:need]] if len(ci)>need else ci)
 kk=np.sort(np.concatenate(keep)); X1,y1=XN[kk],yN[kk]
 print("①-arm(朴素提示词+普通空间熵筛选+等规模): %d 条 / %d 类"%(len(y1),len(set(y1.tolist()))),flush=True)
-zA=np.load(B+"/data/orig4291_plain.npz",allow_pickle=True); XA=norm(zA["vectors"]); yA=np.asarray(zA["labels"],dtype=np.int64)
+zA=np.load(B+"/data/fullcov4291_plain.npz",allow_pickle=True); XA=norm(zA["vectors"]); yA=np.asarray(zA["labels"],dtype=np.int64)
 z2=np.load(B+"/data/test2_full_plain.npz",allow_pickle=True); m=np.asarray(z2["src"])=="real"
 XR=norm(z2["vectors"][m]); yR=np.asarray(z2["labels"],dtype=np.int64)[m]
 a=[];r=[]
